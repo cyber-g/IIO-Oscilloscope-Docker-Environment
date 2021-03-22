@@ -10,7 +10,7 @@ RUN (apt-get update && apt-get upgrade -y -q \
 && apt-get -y -q autoremove)
 
 # Install convenient tools for working on the host
-RUN apt-get install -y bash-completion vim git wget tree unzip cmake
+RUN apt-get install -y bash-completion vim git wget tree unzip cmake sshfs
 
 WORKDIR /root
 RUN cp /etc/skel/.bashrc .
@@ -63,5 +63,5 @@ RUN dbus-daemon --config-file=/usr/share/dbus-1/system.conf --print-address
 RUN service avahi-daemon restart
 
 # Entry point for the docker in interactive mode
-# ENTRYPOINT /bin/bash
-CMD ["osc"]
+ENTRYPOINT /bin/bash
+# CMD ["osc"]
